@@ -48,6 +48,7 @@ const ListOfMeals = () => {
       }
     });
 
+
     if (index !== undefined) {
       data[index].amount += newData.amount;
       setData((prevState) => {

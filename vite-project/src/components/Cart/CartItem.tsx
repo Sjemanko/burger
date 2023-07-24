@@ -4,20 +4,20 @@ import { StyledCartItem } from "./Elements";
 import { CartMealItemsProps } from "../types/types";
 import { useData } from "../context/FormDataContext";
 const CartItem = (props: CartMealItemsProps) => {
-  const { data, setSingleProductAmount } = useData();
+  const { data, updateAmount } = useData();
 
-  const onClickHandler = (action: string) => {
+  const onClickHandler = (action: "add" | "remove") => {
     const cartPosition = data.find((item) => item.id === props.id);
+    console.log("cp", cartPosition);
     if (action === "add") {
       if (cartPosition !== undefined) {
-        setSingleProductAmount((cartPosition.amount += 1));
+        updateAmount(cartPosition.id, 1);
       }
     } else {
       if (cartPosition !== undefined) {
-        setSingleProductAmount((cartPosition.amount -= 1));
+        updateAmount(cartPosition.id, -1);
       }
     }
-    console.log(data);
   };
 
   return (
