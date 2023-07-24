@@ -7,7 +7,7 @@ import { CartVisibilityStateFunc } from "../types/types";
 
 const Button = (props: CartVisibilityStateFunc) => {
   const [bump, setBump] = useState(true);
-  const { data, singleProductAmount } = useData();
+  const { data } = useData();
   const [amount, setAmount] = useState(0);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Button = (props: CartVisibilityStateFunc) => {
       setBump(false);
     }, 300);
     return () => clearTimeout(timeoutId);
-  }, [data, singleProductAmount]);
+  }, [data]);
 
 
   const showCartModal = () => {
